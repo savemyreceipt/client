@@ -5,20 +5,25 @@ import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/reac
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "react-toastify/dist/ReactToastify.css";
 import { Toast } from "@/components/feedback/Toast/Toast";
+import { NavBar } from "@/components/navigation/NavBar";
+import { ProfileContextProvider } from "@/context/ProfileContext";
+
+export const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            staleTime: 1000 * 60,
+        },
+    },
+});
 
 export default function App({ Component, pageProps }: AppProps) {
-    const queryClient = new QueryClient({
-        defaultOptions: {
-            queries: {
-                staleTime: 1000 * 60,
-            },
-        },
-    });
-
     return (
         <QueryClientProvider client={queryClient}>
-            <Toast />
-            <Component {...pageProps} />
+            <ProfileContextProvider>
+                <Toast />
+                <NavBar />
+                <Component {...pageProps} />
+            </ProfileContextProvider>
         </QueryClientProvider>
     );
 }
