@@ -17,8 +17,9 @@ export const useAuth = () => {
 
     const signOut = useCallback(() => {
         removeToken();
+        router.replace("/");
         toast.success("로그아웃 완료!");
-    }, []);
+    }, [router]);
 
     useEffect(() => {
         if (router.pathname === "/login") {
