@@ -13,5 +13,9 @@ export const AvatarImage = React.forwardRef<React.ElementRef<typeof AvatarPrimit
 ));
 
 export const AvatarFallback = React.forwardRef<React.ElementRef<typeof AvatarPrimitive.Fallback>, React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>>(({ className, ...props }, ref) => (
-    <AvatarPrimitive.Fallback ref={ref} className={cn("flex h-full w-full items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800", className)} {...props} />
+    <AvatarPrimitive.Fallback ref={ref} className={cn("flex h-full w-full items-center justify-center rounded-full bg-gray-100 ", className)} {...props} />
 ));
+
+export const AvatarSkeleton = () => {
+    return <div className="animate-pulse flex h-24 w-24 shrink-0 overflow-hidden rounded-full bg-gray-200" />;
+};
