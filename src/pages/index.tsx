@@ -12,7 +12,7 @@ export default function MainPage() {
     }, [router]);
 
     return (
-        <div className="min-h-screen w-full flex flex-col">
+        <div className="fixed top-0 left-0 w-screen h-screen flex flex-col">
             <div className="relative w-full h-screen">
                 <Image alt="background" className="w-full h-full object-cover" fill src="/bg.png" />
                 <div className="absolute inset-0 bg-gray-900/70 flex flex-col items-center justify-center px-4 text-center">
