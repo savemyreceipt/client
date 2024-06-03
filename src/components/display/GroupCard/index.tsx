@@ -1,31 +1,49 @@
 import { Button } from "@/components/forms/Button";
 import { Avatar, AvatarImage } from "../Avatar";
 import { Card, CardHeader, CardContent, CardFooter } from "./style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faReceipt, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 export interface IGroupCard {
-    createdAt: string;
-    members: number;
+    name: string;
+    city: string;
+    organization: string;
+    description: string;
+    memberCount: number;
+    receiptCount: number;
+    accountant: boolean;
 }
 
-export const GroupCard: React.FC = () => {
+export const GroupCard: React.FC<IGroupCard> = ({ name, city, organization, description, memberCount, receiptCount, accountant }) => {
     return (
         <Card>
             <CardHeader>
                 <div className="flex justify-between items-center mb-2">
-                    <div className="text-xs text-gray-500">2024 년 6월 3일</div>
-                    <div className="text-xs text-gray-500">123 members</div>
+                    <div className="text-xs text-gray-500 overflow-hidden text-ellipsis">
+                        {city}/{organization}
+                    </div>
+                    <div className="text-xs text-gray-500 flex-shrink-0">
+                        <span>
+                            <FontAwesomeIcon icon={faUsers} className="mx-1" />
+                            {memberCount} 명
+                        </span>
+                        <span>
+                            <FontAwesomeIcon icon={faReceipt} className="mx-1" />
+                            {receiptCount} 개
+                        </span>
+                    </div>
                 </div>
                 <div className="flex items-center gap-2">
-                    <div className="text-xl p-0 font-semibold">Group 1</div>
+                    <div className="text-xl p-0 font-semibold overflow-hidden text-ellipsis">{name}</div>
                 </div>
             </CardHeader>
-            <CardContent>This is a description of Group 1.This is a description of Group 1.</CardContent>
+            <CardContent>{description}</CardContent>
             <CardFooter className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
                     <Avatar className="w-6 h-6 border">
                         <AvatarImage alt="Avatar" src="/placeholder-user.jpg" />
                     </Avatar>
-                    <div className="text-xs text-gray-500">Managed by John Doe</div>
+                    <div className="text-xs text-gray-500">{accountant}</div>
                 </div>
                 <Button size="sm" variant="default">
                     가입하기
