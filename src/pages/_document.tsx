@@ -6,6 +6,7 @@ export default function Document() {
         <Html lang="en">
             <Head />
             <NavBar />
+
             <body>
                 <main className="w-full max-w-[1400px] mx-auto">
                     <Main />

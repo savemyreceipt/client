@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
 import { faUser, faUserGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function SelectRolePage() {
+    const { signIn } = useAuth();
+
     return (
         <div className="w-full h-screen fixed top-0 left-0">
             <section className="w-full h-full relative flex items-center justify-center bg-cover bg-center bg-no-repeat lg:col-span-1">
@@ -22,11 +25,11 @@ export default function SelectRolePage() {
                         </div>
                         <div className="space-y-4">
                             <div className="grid gap-2">
-                                <Button className="justify-start gap-2 text-black hover:bg-[#00a869]/90 hover:text-white" variant="white">
+                                <Button className="justify-start gap-2 text-black hover:bg-[#00a869]/90 hover:text-white" variant="white" onClick={signIn}>
                                     <FontAwesomeIcon icon={faUser} />
                                     일반 사용자
                                 </Button>
-                                <Button className="justify-start gap-2 text-black hover:bg-[#00a869]/90 hover:text-white" variant="white">
+                                <Button className="justify-start gap-2 text-black hover:bg-[#00a869]/90 hover:text-white" variant="white" onClick={signIn}>
                                     <FontAwesomeIcon icon={faUserGear} />
                                     회계 사용자
                                 </Button>
