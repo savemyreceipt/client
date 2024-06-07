@@ -3,9 +3,6 @@ import { Input } from "@/components/forms/Input";
 import { Label } from "@/components/forms/Label";
 import { Textarea } from "@/components/forms/TextArea";
 import { Title } from "@/components/typography/Title";
-import { useMutation } from "@tanstack/react-query";
-import { queryClient } from "../_app";
-import { groupsService } from "@/services/groups/groups.service";
 import { useNewGroup } from "@/hooks/useNewGroup";
 
 export default function NewGroupPage() {
