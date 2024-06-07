@@ -1,8 +1,10 @@
-import { GroupCard, GroupCardSkeleton } from "@/components/display/GroupCard";
+import { GroupCard, GroupCardSkeleton } from "@/components/display/Cards/GroupCard";
 import { SearchBar } from "@/components/forms/SearchBar";
 import { withProtectedRoute } from "@/components/guards/withProtectedRoute";
+import { Pagination } from "@/components/navigation/Pagination";
 import { Title } from "@/components/typography/Title";
 import { useSearchGroup } from "@/hooks/useSearchGroup";
+import { useSearchParams } from "next/navigation";
 
 export default withProtectedRoute(function GroupsPage() {
     const { inputRef, isPending, data, handleChange } = useSearchGroup();
@@ -16,14 +18,14 @@ export default withProtectedRoute(function GroupsPage() {
                 </div>
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {isPending
-                        ? Array.from({ length: 12 }).map(() => {
-                              // eslint-disable-next-line react/jsx-key
-                              return <GroupCardSkeleton />;
+                        ? Array.from({ length: 12 }).map((_, index) => {
+                              return <GroupCardSkeleton key={index} />;
                           })
-                        : data?.data.map((group) => {
+                        : data?.content.map((group) => {
                               return (
                                   <GroupCard
                                       key={group.id}
+                                      id={group.id}
                                       city={group.city}
                                       organization={group.organization}
                                       name={group.name}
@@ -31,11 +33,14 @@ export default withProtectedRoute(function GroupsPage() {
                                       memberCount={group.memberCount}
                                       accountant={group.accountant}
                                       description={group.description}
+                                      accountantName={group.accountantName}
                                   />
                               );
                           })}
                 </div>
             </main>
+
+            <Pagination totalPages={Number(data?.totalPages)} />
         </div>
     );
 });
