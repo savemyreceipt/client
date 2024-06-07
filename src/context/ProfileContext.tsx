@@ -1,7 +1,6 @@
 import { IReadProfileResponse } from "@/services/member/member.types";
 import { memberService } from "@/services/member/memeber.service";
 import { useQuery } from "@tanstack/react-query";
-import { profile } from "console";
 import { createContext, useContext } from "react";
 
 export const ProfileContext = createContext({
