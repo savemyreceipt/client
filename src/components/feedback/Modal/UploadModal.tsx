@@ -16,9 +16,8 @@ import { UploadIcon } from "@/assets/UploadIcon";
 import { useUploadModal } from "@/context/UploadModalContext";
 
 export const UploadModal = () => {
-    const { setIsModalOpened } = useUploadModal();
-
     const {
+        priceRef,
         categoryRef,
         descriptionRef,
         purchaseDateRef,
@@ -27,11 +26,8 @@ export const UploadModal = () => {
         handleFileChange,
         handleFileUpload,
         handleSubmit,
+        handleCancel,
     } = useReceiptUpload();
-
-    const handleCancelBtnClick = useCallback(() => {
-        setIsModalOpened(false);
-    }, [setIsModalOpened]);
 
     return (
         <motion.div
@@ -83,11 +79,11 @@ export const UploadModal = () => {
                                 <Label htmlFor="price" className="mx-3">
                                     가격
                                 </Label>
-                                <Input id="price" type="number" className="w-[200px]" />
+                                <Input id="price" type="number" className="w-[200px]" ref={priceRef} />
                             </div>
                         </div>
                         <div className="flex justify-end gap-2">
-                            <Button variant="outline" onClick={handleCancelBtnClick}>
+                            <Button variant="outline" onClick={handleCancel}>
                                 취소
                             </Button>
                             <Button type="submit">저장</Button>
