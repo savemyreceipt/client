@@ -1,8 +1,10 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/display/Avatar";
 import { Button } from "@/components/forms/Button";
+import { withProtectedRoute } from "@/components/guards/withProtectedRoute";
+
 import { useProfile } from "@/context/ProfileContext";
 
-export default function ProfilePage() {
+export default withProtectedRoute(function ProfilePage() {
     const profile = useProfile();
 
     return (
@@ -27,4 +29,4 @@ export default function ProfilePage() {
             </div>
         </div>
     );
-}
+});

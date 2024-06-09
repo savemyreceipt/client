@@ -4,6 +4,7 @@ import { GroupInfoCard, GroupInfoCardSkeleton } from "@/components/display/Cards
 import { MemberCard, MemberCardSkeleton } from "@/components/display/Cards/MemberCard";
 import { ReceiptCard, ReceiptCardSkeleton } from "@/components/display/Cards/ReceiptCard";
 import { Button } from "@/components/forms/Button";
+import { withProtectedRoute } from "@/components/guards/withProtectedRoute";
 
 import { useGroupMembers } from "@/hooks/groups/useGroupMembers";
 import { useReceipt } from "@/hooks/receipt/useReceipt";
@@ -12,7 +13,7 @@ import { ChevronRightIcon } from "@/assets/ChevronRightIcon";
 
 import { useUploadModal } from "@/context/UploadModalContext";
 
-export default function GroupDetailPage() {
+export default withProtectedRoute(function GroupDetailPage() {
     const { isPending: isGroupInfoPending, data: members } = useGroupMembers();
     const { setIsModalOpened } = useUploadModal();
 
@@ -88,4 +89,4 @@ export default function GroupDetailPage() {
             </div>
         </div>
     );
-}
+});

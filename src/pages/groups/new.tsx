@@ -2,11 +2,12 @@ import { Button } from "@/components/forms/Button";
 import { Input } from "@/components/forms/Input";
 import { Label } from "@/components/forms/Label";
 import { Textarea } from "@/components/forms/TextArea";
+import { withProtectedRoute } from "@/components/guards/withProtectedRoute";
 import { Title } from "@/components/typography/Title";
 
 import { useNewGroup } from "@/hooks/groups/useNewGroup";
 
-export default function NewGroupPage() {
+export default withProtectedRoute(function NewGroupPage() {
     const { nameRef, cityRef, organizationRef, descriptionRef, handleSubmit } = useNewGroup();
 
     return (
@@ -35,4 +36,4 @@ export default function NewGroupPage() {
             </div>
         </div>
     );
-}
+});
