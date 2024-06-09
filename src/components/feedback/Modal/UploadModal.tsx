@@ -17,6 +17,7 @@ import { useUploadModal } from "@/context/UploadModalContext";
 
 export const UploadModal = () => {
     const {
+        memoRef,
         priceRef,
         categoryRef,
         descriptionRef,
@@ -68,7 +69,7 @@ export const UploadModal = () => {
                             <Input id="description" placeholder="설명" ref={descriptionRef} />
                         </div>
                         <div className="grid gap-2">
-                            <Textarea id="memo" placeholder="Memo" rows={3} />
+                            <Textarea id="memo" placeholder="Memo" rows={3} ref={memoRef} />
                             <div className="flex items-center justify-between">
                                 <Label htmlFor="purchaseDate" className="mx-3">
                                     날짜
