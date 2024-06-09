@@ -1,39 +1,80 @@
+import { Title, TitleSkeleton } from "@/components/typography/Title";
+
+import { useGroupInfo } from "@/hooks/groups/useGroupInfo";
+
 import { Card, CardContent } from "./style";
 
-export interface IGroupInfoCard {
-    region: string;
-    totalReceipts: number;
-    totalMembers: number;
-    createdAt: string;
-}
+export const GroupInfoCard = () => {
+    const { isPending, data } = useGroupInfo();
 
-export const GroupInfoCard: React.FC<IGroupInfoCard> = ({ region, totalReceipts, totalMembers, createdAt }) => {
+    if (isPending)
+        return (
+            <>
+                <TitleSkeleton />
+                <GroupInfoCardSkeleton />
+            </>
+        );
+
     return (
-        <Card>
-            <CardContent className="pt-6">
+        <>
+            <Title title={data?.name as string} subtitle={data?.description as string} />
+            <Card>
+                <CardContent className="pt-6">
+                    <div className="grid gap-4">
+                        <div className="flex items-center justify-between">
+                            <div className="text-sm font-medium text-gray-500 ">지역</div>
+                            <div className="text-sm font-medium text-gray-900 ">{data?.city}</div>
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <div className="text-sm font-medium text-gray-500 ">조직</div>
+                            <div className="text-sm font-medium text-gray-900 ">{data?.organization}</div>
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <div className="text-sm font-medium text-gray-500 ">총 멤버수</div>
+                            <div className="text-sm font-medium text-gray-900 ">{data?.memberCount} 명</div>
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <div className="text-sm font-medium text-gray-500 ">총 영수증</div>
+                            <div className="text-sm font-medium text-gray-900 ">{data?.receiptCount ?? "0"} 개</div>
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <div className="text-sm font-medium text-gray-500 ">회계 담당자</div>
+                            <div className="text-sm font-medium text-gray-900 ">{data?.accountantName}</div>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+        </>
+    );
+};
+
+export const GroupInfoCardSkeleton = () => {
+    return (
+        <div className="bg-white shadow rounded-lg">
+            <div className="p-6">
                 <div className="grid gap-4">
                     <div className="flex items-center justify-between">
-                        <div className="text-sm font-medium text-gray-500 ">지역</div>
-                        <div className="text-sm font-medium text-gray-900 ">{region}</div>
+                        <div className="text-sm font-medium text-gray-500">지역</div>
+                        <div className="w-24 h-4 bg-gray-300 animate-pulse rounded"></div>
                     </div>
                     <div className="flex items-center justify-between">
-                        <div className="text-sm font-medium text-gray-500 ">조직</div>
-                        <div className="text-sm font-medium text-gray-900 ">{region}</div>
+                        <div className="text-sm font-medium text-gray-500">조직</div>
+                        <div className="w-32 h-4 bg-gray-300 animate-pulse rounded"></div>
                     </div>
                     <div className="flex items-center justify-between">
-                        <div className="text-sm font-medium text-gray-500 ">총 영수증</div>
-                        <div className="text-sm font-medium text-gray-900 ">{totalReceipts ?? "0"} 개</div>
+                        <div className="text-sm font-medium text-gray-500">총 멤버수</div>
+                        <div className="w-12 h-4 bg-gray-300 animate-pulse rounded"></div>
                     </div>
                     <div className="flex items-center justify-between">
-                        <div className="text-sm font-medium text-gray-500 ">총 멤버수</div>
-                        <div className="text-sm font-medium text-gray-900 ">{totalMembers} 명</div>
+                        <div className="text-sm font-medium text-gray-500">총 영수증</div>
+                        <div className="w-12 h-4 bg-gray-300 animate-pulse rounded"></div>
                     </div>
                     <div className="flex items-center justify-between">
-                        <div className="text-sm font-medium text-gray-500 ">그룹 생성날짜</div>
-                        <div className="text-sm font-medium text-gray-900 ">{createdAt}</div>
+                        <div className="text-sm font-medium text-gray-500">회계 담당자</div>
+                        <div className="w-24 h-4 bg-gray-300 animate-pulse rounded"></div>
                     </div>
                 </div>
-            </CardContent>
-        </Card>
+            </div>
+        </div>
     );
 };

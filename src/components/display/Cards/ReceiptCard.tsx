@@ -1,7 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button } from "@/components/forms/Button";
+
 import { Card } from "./style";
 import { faReceipt } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "@/components/forms/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export interface IReceiptCard {
     id: number;
@@ -13,7 +14,14 @@ export interface IReceiptCard {
     checked: true;
 }
 
-export const ReceiptCard: React.FC<IReceiptCard> = ({ imageUri, category, description, purchaseDate, price, checked }) => {
+export const ReceiptCard: React.FC<IReceiptCard> = ({
+    imageUri,
+    category,
+    description,
+    purchaseDate,
+    price,
+    checked,
+}) => {
     return (
         <Card className="p-3 flex-1">
             <div className="flex items-center justify-between">

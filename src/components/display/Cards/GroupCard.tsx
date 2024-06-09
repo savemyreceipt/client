@@ -1,17 +1,30 @@
-import { Button } from "@/components/forms/Button";
-import { Avatar, AvatarImage } from "../Avatar";
-import { Card, CardHeader, CardContent, CardFooter } from "./style";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faReceipt, faUsers } from "@fortawesome/free-solid-svg-icons";
-import { ISearchGroup } from "@/services/groups/groups.types";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 
-export const GroupCard: React.FC<ISearchGroup> = ({ id, name, city, organization, description, memberCount, receiptCount, accountant, accountantName }) => {
+import { Button } from "@/components/forms/Button";
+
+import { ISearchGroup } from "@/services/groups/groups.types";
+
+import { Avatar, AvatarImage } from "../Avatar";
+import { Card, CardHeader, CardContent, CardFooter } from "./style";
+import { faReceipt, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+export const GroupCard: React.FC<ISearchGroup> = ({
+    id,
+    name,
+    city,
+    organization,
+    description,
+    memberCount,
+    receiptCount,
+    accountant,
+    accountantName,
+}) => {
     const router = useRouter();
 
     const handleClick = () => {
-        router.push({ pathname: `/groups/${id}`, query: { name, city, organization, description, memberCount, receiptCount, accountant, accountantName } });
+        router.push({ pathname: `/groups/${id}` });
     };
 
     return (
