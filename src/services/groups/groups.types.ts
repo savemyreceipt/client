@@ -45,6 +45,22 @@ export interface ISearchGroupsResponse {
     };
 }
 
+export interface IReadGroupByGroupId {
+    code: number;
+    message: string;
+    data: {
+        id: number;
+        name: string;
+        city: string;
+        organization: string;
+        description: string;
+        memberCount: number;
+        receiptCount: number;
+        accountantName: string;
+        accountant: boolean;
+    };
+}
+
 export interface ICreateGroupRequest {
     name: string;
     city: string;
@@ -78,7 +94,7 @@ export interface IReadGroupMembersResponse {
                     email: string;
                     name: string;
                     profileUri: string;
-                }
+                },
             ];
             number: number;
             sort: {
