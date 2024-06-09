@@ -1,7 +1,9 @@
-import { Button } from "@/components/forms/Button";
-import { OAUTH_REDIRECT_URL } from "@/hooks/useAuth";
 import Image from "next/image";
 import { useRouter } from "next/router";
+
+import { Button } from "@/components/forms/Button";
+
+import { OAUTH_REDIRECT_URL } from "@/hooks/member/useAuth";
 
 export default function MainPage() {
     const router = useRouter();

@@ -1,10 +1,12 @@
+import { useSearchParams } from "next/navigation";
+
 import { GroupCard, GroupCardSkeleton } from "@/components/display/Cards/GroupCard";
 import { SearchBar } from "@/components/forms/SearchBar";
 import { withProtectedRoute } from "@/components/guards/withProtectedRoute";
 import { Pagination } from "@/components/navigation/Pagination";
 import { Title } from "@/components/typography/Title";
-import { useSearchGroup } from "@/hooks/useSearchGroup";
-import { useSearchParams } from "next/navigation";
+
+import { useSearchGroup } from "@/hooks/groups/useSearchGroup";
 
 export default withProtectedRoute(function GroupsPage() {
     const { inputRef, isPending, data, handleChange } = useSearchGroup();

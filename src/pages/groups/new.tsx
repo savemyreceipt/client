@@ -3,7 +3,8 @@ import { Input } from "@/components/forms/Input";
 import { Label } from "@/components/forms/Label";
 import { Textarea } from "@/components/forms/TextArea";
 import { Title } from "@/components/typography/Title";
-import { useNewGroup } from "@/hooks/useNewGroup";
+
+import { useNewGroup } from "@/hooks/groups/useNewGroup";
 
 export default function NewGroupPage() {
     const { nameRef, cityRef, organizationRef, descriptionRef, handleSubmit } = useNewGroup();

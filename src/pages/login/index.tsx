@@ -1,9 +1,12 @@
-import { Button } from "@/components/forms/Button";
-import { useAuth } from "@/hooks/useAuth";
-import { faUser, faUserGear } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
+
+import { Button } from "@/components/forms/Button";
+
+import { useAuth } from "@/hooks/member/useAuth";
+
+import { faUser, faUserGear } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function SelectRolePage() {
     const { signIn } = useAuth();
@@ -12,7 +15,12 @@ export default function SelectRolePage() {
         <div className="w-full h-screen fixed top-0 left-0">
             <section className="w-full h-full relative flex items-center justify-center bg-cover bg-center bg-no-repeat lg:col-span-1">
                 <div className="fixed z-10 bg-gray-900/50 w-screen h-full" />
-                <Image alt="Background" className="absolute inset-0 z-0 h-full w-full object-cover" fill src="/bg.png" />
+                <Image
+                    alt="Background"
+                    className="absolute inset-0 z-0 h-full w-full object-cover"
+                    fill
+                    src="/bg.png"
+                />
                 <div className="relative z-10 w-full max-w-lg rounded-lg bg-white p-8 shadow-lg">
                     <div className="space-y-4">
                         <div className="space-y-2">
@@ -25,11 +33,19 @@ export default function SelectRolePage() {
                         </div>
                         <div className="space-y-4">
                             <div className="grid gap-2">
-                                <Button className="justify-start gap-2 text-black hover:bg-[#00a869]/90 hover:text-white" variant="white" onClick={signIn}>
+                                <Button
+                                    className="justify-start gap-2 text-black hover:bg-[#00a869]/90 hover:text-white"
+                                    variant="white"
+                                    onClick={signIn}
+                                >
                                     <FontAwesomeIcon icon={faUser} />
                                     일반 사용자
                                 </Button>
-                                <Button className="justify-start gap-2 text-black hover:bg-[#00a869]/90 hover:text-white" variant="white" onClick={signIn}>
+                                <Button
+                                    className="justify-start gap-2 text-black hover:bg-[#00a869]/90 hover:text-white"
+                                    variant="white"
+                                    onClick={signIn}
+                                >
                                     <FontAwesomeIcon icon={faUserGear} />
                                     회계 사용자
                                 </Button>
