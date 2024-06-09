@@ -20,6 +20,11 @@ jobs:
             - name: checkout source code
               uses: actions/checkout@v4
 
+            - name: Create Environment Variables
+              run: |
+                  mkdir -p ./
+                  echo "${{ secrets.PRODUCTION_ENV }}" > ./.env.production
+
             - name: Set up Docker Buildx
               uses: docker/setup-buildx-action@v2
 
