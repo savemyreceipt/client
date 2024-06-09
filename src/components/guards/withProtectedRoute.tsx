@@ -1,7 +1,8 @@
-import { useAuth } from "@/hooks/useAuth";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+
+import { useAuth } from "@/hooks/member/useAuth";
 
 export const withProtectedRoute = <Props extends object>(PageComponent: NextPage) => {
     const ProtectedPage = (props: Props) => {
