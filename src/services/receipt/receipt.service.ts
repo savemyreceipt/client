@@ -1,6 +1,6 @@
 import { api } from "@/config/axios";
 
-import { IUploadReceiptResponse } from "./receipt.types";
+import { IUpdateReceiptRequest, IUploadReceiptResponse } from "./receipt.types";
 
 export const receiptService = {
     uploadReceipt: async (groupId: number, file: Blob) => {
@@ -11,6 +11,11 @@ export const receiptService = {
             headers: { "Content-Type": "multipart/form-data" },
         });
         return response.data.data;
+    },
+
+    updateReceipt: async (receiptId: number, body: IUpdateReceiptRequest) => {
+        const response = await api.put(`/receipts/${receiptId}`, body);
+        return response.data;
     },
 
     deleteReceipt: async (receiptId: number) => {

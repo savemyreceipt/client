@@ -11,3 +11,10 @@ export interface IUploadReceiptResponse {
         checked: boolean;
     };
 }
+export interface IUpdateReceiptRequest {
+    category: string;
+    description: string;
+    memo: string;
+    purchaseDate: string;
+    price: number;
+}

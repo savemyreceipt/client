@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useCallback, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
+import { queryClient } from "@/pages/_app";
+
 import { receiptService } from "@/services/receipt/receipt.service";
 import { IUploadReceiptResponse } from "@/services/receipt/receipt.types";
 
@@ -11,6 +13,7 @@ export const useReceiptUpload = (maxFileSize: number = 5 * 1024 * 1024) => {
     const router = useRouter();
     const { setIsModalOpened } = useUploadModal();
 
+    const memoRef = useRef<HTMLTextAreaElement>(null);
     const categoryRef = useRef<HTMLInputElement>(null);
     const descriptionRef = useRef<HTMLInputElement>(null);
     const purchaseDateRef = useRef<HTMLInputElement>(null);
@@ -54,7 +57,7 @@ export const useReceiptUpload = (maxFileSize: number = 5 * 1024 * 1024) => {
                             )
                         )
                             return;
-
+                        setData(data);
                         categoryRef.current.value = data.category;
                         descriptionRef.current.value = data.description;
                         purchaseDateRef.current.value = data.purchaseDate;
@@ -73,9 +76,37 @@ export const useReceiptUpload = (maxFileSize: number = 5 * 1024 * 1024) => {
         imageInput.current?.click();
     }, []);
 
-    const handleSubmit = useCallback(async (e: FormEvent) => {
-        e.preventDefault();
-    }, []);
+    const handleSubmit = useCallback(
+        async (e: FormEvent) => {
+            e.preventDefault();
+            if (isUploading) return;
+            const request = receiptService.updateReceipt(data?.id as number, {
+                category: categoryRef.current?.value as string,
+                description: descriptionRef.current?.value as string,
+                memo: memoRef.current?.value as string,
+                purchaseDate: purchaseDateRef.current?.value as string,
+                price: Number(priceRef.current?.value as string),
+            });
+            toast
+                .promise(request, {
+                    success: "영수증 업로드 완료!",
+                    pending: "영수증 업로드 중입니다",
+                    error: "영수증 업로드 실패, 잠시 후 다시 시도해주세요",
+                })
+                .then(() => {
+                    queryClient.invalidateQueries({
+                        queryKey: [`/receipts`],
+                    });
+                })
+                .catch(() => {
+                    receiptService.deleteReceipt(data?.id as number);
+                })
+                .finally(() => {
+                    setIsModalOpened(false);
+                });
+        },
+        [isUploading, data?.id, setIsModalOpened],
+    );
 
     const handleCancel = useCallback(async () => {
         if (isUploading) return;
@@ -85,6 +116,7 @@ export const useReceiptUpload = (maxFileSize: number = 5 * 1024 * 1024) => {
     }, [setIsModalOpened, isUploading, data?.id]);
 
     return {
+        memoRef,
         priceRef,
         categoryRef,
         descriptionRef,
