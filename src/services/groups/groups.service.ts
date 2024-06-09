@@ -6,6 +6,7 @@ import {
     ICreateGroupRequest,
     IReadGroupByGroupId,
     IReadGroupMembersResponse,
+    IReadReceiptByGroupIdResponse,
     ISearchGroupsResponse,
 } from "./groups.types";
 
@@ -33,5 +34,10 @@ export const groupsService = {
     readGroupMembers: async (groupId: number, page: number = 0) => {
         const response = await api.get<IReadGroupMembersResponse>(`/groups/${groupId}/members?page=${page}`);
         return response.data.data.memberList;
+    },
+
+    readReceiptsByGroupId: async (groupId: number, page: number = 0) => {
+        const response = await api.get<IReadReceiptByGroupIdResponse>(`/groups/${groupId}/receipts?page=${page}`);
+        return response.data.data.receiptList.content;
     },
 };

@@ -109,3 +109,48 @@ export interface IReadGroupMembersResponse {
         };
     };
 }
+
+export interface IReadReceiptByGroupIdResponse {
+    code: number;
+    message: string;
+    data: {
+        receiptList: {
+            totalPages: number;
+            totalElements: number;
+            pageable: {
+                paged: boolean;
+                pageNumber: number;
+                pageSize: number;
+                offset: number;
+                sort: {
+                    sorted: boolean;
+                    empty: boolean;
+                    unsorted: boolean;
+                };
+                unpaged: boolean;
+            };
+            size: number;
+            content: [
+                {
+                    id: number;
+                    imageUri: string;
+                    category: string;
+                    description: string;
+                    purchaseDate: string;
+                    price: number;
+                    checked: boolean;
+                },
+            ];
+            number: number;
+            sort: {
+                sorted: boolean;
+                empty: boolean;
+                unsorted: boolean;
+            };
+            first: boolean;
+            last: boolean;
+            numberOfElements: number;
+            empty: boolean;
+        };
+    };
+}
