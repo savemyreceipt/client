@@ -1,11 +1,23 @@
-import { api } from "@/config/axios";
-import { ICreateGroupRequest, IReadGroupMembersResponse, ISearchGroupsResponse } from "./groups.types";
 import { toast } from "react-toastify";
+
+import { api } from "@/config/axios";
+
+import {
+    ICreateGroupRequest,
+    IReadGroupByGroupId,
+    IReadGroupMembersResponse,
+    ISearchGroupsResponse,
+} from "./groups.types";
 
 export const groupsService = {
     searchGroups: async (keyword: string, page: number = 1) => {
         const response = await api.get<ISearchGroupsResponse>(`/groups/search?keyword=${keyword}&page=${page - 1}`);
         return response.data.data.groupList;
+    },
+
+    readGroupByGroupId: async (groupId: number) => {
+        const response = await api.get<IReadGroupByGroupId>(`/groups/${groupId}`);
+        return response.data.data;
     },
 
     createGroup: async ({ name, city, organization, description }: ICreateGroupRequest) => {
