@@ -1,15 +1,16 @@
 import Image from "next/image";
-import Link from "next/link";
+import { useEffect } from "react";
 
-import { Button } from "@/components/forms/Button";
+import { Spinner } from "@/components/feedback/Spinner/Spinner";
 
 import { useAuth } from "@/hooks/member/useAuth";
 
-import { faUser, faUserGear } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 export default function SelectRolePage() {
     const { signIn } = useAuth();
+
+    useEffect(() => {
+        signIn();
+    }, [signIn]);
 
     return (
         <div className="w-full h-screen fixed top-0 left-0">
@@ -24,39 +25,9 @@ export default function SelectRolePage() {
                 <div className="relative z-10 w-full max-w-lg rounded-lg bg-white p-8 shadow-lg">
                     <div className="space-y-4">
                         <div className="space-y-2">
-                            <h2 className="text-2xl font-bold text-black">Save My Receipt</h2>
-                            <p className="text-gray-500">회원 유형을 선택해주세요</p>
-                            <p className="text-gray-500">
-                                <span>일반 사용자는 그룹에 가입하여 영수증을 업로드 할 수 있습니다</span> <br />
-                                <span>회계 사용자는 그룹을 생성하고 수집된 영수증과 장부를 관리합니다</span>
-                            </p>
-                        </div>
-                        <div className="space-y-4">
-                            <div className="grid gap-2">
-                                <Button
-                                    className="justify-start gap-2 text-black hover:bg-[#00a869]/90 hover:text-white"
-                                    variant="white"
-                                    onClick={signIn}
-                                >
-                                    <FontAwesomeIcon icon={faUser} />
-                                    일반 사용자
-                                </Button>
-                                <Button
-                                    className="justify-start gap-2 text-black hover:bg-[#00a869]/90 hover:text-white"
-                                    variant="white"
-                                    onClick={signIn}
-                                >
-                                    <FontAwesomeIcon icon={faUserGear} />
-                                    회계 사용자
-                                </Button>
-                            </div>
-                            <div className="text-sm text-gray-500">
-                                계속하려면, 서비스 이용약관에 동의해야합니다
-                                <Link className="underline" href="#">
-                                    서비스 이용약관
-                                </Link>
-                                .
-                            </div>
+                            <h2 className="text-2xl font-bold text-black text-center">Save My Receipt</h2>
+                            <p className="text-gray-500 text-center">로그인 중입니다...</p>
+                            <Spinner />
                         </div>
                     </div>
                 </div>
