@@ -1,6 +1,8 @@
-import { getToken } from "@/utils/token";
-import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
+
+import axios, { AxiosError } from "axios";
+
+import { getToken } from "@/utils/token";
 
 export const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
@@ -21,12 +23,12 @@ api.interceptors.response.use(
         return response;
     },
     (error: AxiosError) => {
-        // if (error.response?.status === 401) {
-        //     toast.error("다시 로그인해주세요");
-        //     location.href = "/";
-        // }
+        if (error.response?.status === 401) {
+            toast.error("다시 로그인해주세요");
+            location.href = "/";
+        }
         console.log(error.request);
         console.error("ERROR: " + error);
         return error;
-    }
+    },
 );

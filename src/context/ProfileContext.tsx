@@ -1,7 +1,9 @@
+import { createContext, useContext } from "react";
+
 import { IReadProfileResponse } from "@/services/member/member.types";
 import { memberService } from "@/services/member/memeber.service";
+
 import { useQuery } from "@tanstack/react-query";
-import { createContext, useContext } from "react";
 
 export const ProfileContext = createContext({
     email: "",
@@ -10,7 +12,7 @@ export const ProfileContext = createContext({
 });
 
 export const ProfileContextProvider = ({ children }: { children: React.ReactNode }) => {
-    const { isPending, data } = useQuery<IReadProfileResponse>({
+    const { data } = useQuery<IReadProfileResponse>({
         queryKey: ["members"],
         queryFn: () => memberService.readProfile(),
     });
@@ -21,7 +23,8 @@ export const ProfileContextProvider = ({ children }: { children: React.ReactNode
                 email: data?.data.email as string,
                 name: data?.data.name as string,
                 profileUri: data?.data.profileUri as string,
-            }}>
+            }}
+        >
             {children}
         </ProfileContext.Provider>
     );
