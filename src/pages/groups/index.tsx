@@ -26,6 +26,7 @@ export default withProtectedRoute(function GroupsPage() {
                         : data?.content.map((group) => {
                               return (
                                   <GroupCard
+                                      variants="SEARCH"
                                       key={group.id}
                                       id={group.id}
                                       city={group.city}

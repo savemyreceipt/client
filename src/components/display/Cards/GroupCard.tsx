@@ -1,8 +1,12 @@
 import { useRouter } from "next/router";
 import { useCallback } from "react";
+import { toast } from "react-toastify";
 
 import { Button } from "@/components/forms/Button";
 
+import { queryClient } from "@/pages/_app";
+
+import { groupsService } from "@/services/groups/groups.service";
 import { ISearchGroup } from "@/services/groups/groups.types";
 
 import { Avatar, AvatarImage } from "../Avatar";
@@ -10,7 +14,11 @@ import { Card, CardHeader, CardContent, CardFooter } from "./style";
 import { faReceipt, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const GroupCard: React.FC<ISearchGroup> = ({
+export interface IGroupCard extends ISearchGroup {
+    variants: "SEARCH" | "JOINED";
+}
+
+export const GroupCard: React.FC<IGroupCard> = ({
     id,
     name,
     city,
@@ -18,17 +26,39 @@ export const GroupCard: React.FC<ISearchGroup> = ({
     description,
     memberCount,
     receiptCount,
-    accountant,
     accountantName,
+    variants,
 }) => {
     const router = useRouter();
 
-    const handleClick = () => {
-        router.push({ pathname: `/groups/${id}` });
-    };
+    const handleJoinBtnClick = useCallback(async () => {
+        const request = groupsService.joinGroup(id);
+        toast
+            .promise(request, {
+                pending: "그룹 가입중입니다",
+                success: "그룹 가입 성공!",
+                error: "이미 가입된 그룹입니다",
+            })
+            .then(() => {
+                router.push({ pathname: `/groups/${id}` });
+            });
+    }, [id, router]);
+
+    const handleLeaveBtnClick = useCallback(async () => {
+        const request = groupsService.leaveGroup(id);
+        toast
+            .promise(request, {
+                success: "그룹 탈퇴 완료!",
+                pending: "잠시만 기다려주세요..",
+                error: "그룹 탈퇴 실패! 관리자에게 문의해주세요",
+            })
+            .then(() => {
+                queryClient.invalidateQueries({ queryKey: [`/groups`] });
+            });
+    }, [id]);
 
     return (
-        <Card onClick={handleClick}>
+        <Card>
             <CardHeader>
                 <div className="flex justify-between items-center mb-2">
                     <div className="text-xs text-gray-500 overflow-hidden text-ellipsis">
@@ -41,7 +71,7 @@ export const GroupCard: React.FC<ISearchGroup> = ({
                         </span>
                         <span>
                             <FontAwesomeIcon icon={faReceipt} className="mx-1" />
-                            {receiptCount ?? "0"} 개
+                            {receiptCount || "0"} 개
                         </span>
                     </div>
                 </div>
@@ -57,8 +87,12 @@ export const GroupCard: React.FC<ISearchGroup> = ({
                     </Avatar>
                     <div className="text-xs text-gray-500">{accountantName}</div>
                 </div>
-                <Button size="sm" variant="default">
-                    가입하기
+                <Button
+                    size="sm"
+                    variant={variants === "SEARCH" ? "default" : "destructive"}
+                    onClick={variants === "SEARCH" ? handleJoinBtnClick : handleLeaveBtnClick}
+                >
+                    {variants === "SEARCH" ? "가입하기" : "탈퇴하기"}
                 </Button>
             </CardFooter>
         </Card>
