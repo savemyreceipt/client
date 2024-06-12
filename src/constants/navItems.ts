@@ -11,8 +11,8 @@ export const navItems = [
     },
     {
         id: 3,
-        text: "내가 속한 그룹",
-        href: "/groups/my",
+        text: "내 프로필",
+        href: "/profile",
     },
 ];
 
@@ -21,10 +21,5 @@ export const navDropDownItems = [
         id: 1,
         text: "내 프로필",
         href: "/profile",
-    },
-    {
-        id: 2,
-        text: "",
-        href: "",
     },
 ];
