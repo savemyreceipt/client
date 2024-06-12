@@ -54,6 +54,7 @@ export default withProtectedRoute(function ProfilePage() {
                                     : data?.content.map((group) => {
                                           return (
                                               <GroupCard
+                                                  variants="JOINED"
                                                   key={group.id}
                                                   id={0}
                                                   name={group.name}

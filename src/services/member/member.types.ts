@@ -11,51 +11,55 @@ export interface IReadProfileResponse {
     };
 }
 
-export type IReadMyGroups = BaseResponse<{
-    groupList: {
-        totalPages: 0;
-        totalElements: 0;
-        pageable: {
-            paged: true;
-            pageNumber: 0;
-            pageSize: 0;
-            offset: 0;
-            sort: {
-                sorted: true;
-                empty: true;
-                unsorted: true;
+export interface IReadMyGroups {
+    code: number;
+    message: string;
+    data: {
+        groupList: {
+            totalPages: number;
+            totalElements: number;
+            pageable: {
+                paged: boolean;
+                pageNumber: number;
+                pageSize: number;
+                offset: number;
+                sort: {
+                    sorted: boolean;
+                    empty: boolean;
+                    unsorted: boolean;
+                };
+                unpaged: boolean;
             };
-            unpaged: true;
+            size: number;
+            content: [
+                {
+                    id: number;
+                    name: string;
+                    city: string;
+                    organization: string;
+                    description: string;
+                    memberCount: number;
+                    receiptCount: number;
+                    accountantName: string;
+                    accountant: boolean;
+                },
+            ];
+            number: number;
+            sort: {
+                sorted: boolean;
+                empty: boolean;
+                unsorted: boolean;
+            };
+            first: boolean;
+            last: boolean;
+            numberOfElements: number;
+            empty: boolean;
         };
-        size: 0;
-        content: [
-            {
-                id: 0;
-                name: "string";
-                city: "string";
-                organization: "string";
-                description: "string";
-                memberCount: 0;
-                receiptCount: 0;
-                accountantName: "string";
-                accountant: true;
-            },
-        ];
-        number: 0;
-        sort: {
-            sorted: true;
-            empty: true;
-            unsorted: true;
-        };
-        numberOfElements: 0;
-        first: true;
-        last: true;
-        empty: true;
     };
-}>;
+}
 
 export interface IReadMyGroup {
     code: number;
-    message: "string";
+    message: string;
     data: {};
 }

@@ -1,3 +1,4 @@
+import { IReadMyGroups } from "@/services/member/member.types";
 import { memberService } from "@/services/member/memeber.service";
 
 import { useQuery } from "@tanstack/react-query";
