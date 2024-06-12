@@ -23,10 +23,10 @@ api.interceptors.response.use(
         return response;
     },
     (error: AxiosError) => {
-        if (error.response?.status === 401) {
-            toast.error("다시 로그인해주세요");
-            location.href = "/";
-        }
+        // if (error.response?.status === 401) {
+        //     toast.error("다시 로그인해주세요");
+        //     location.href = "/";
+        // }
         console.log(error.request);
         console.error("ERROR: " + error);
         return error;
