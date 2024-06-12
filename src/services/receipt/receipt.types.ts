@@ -18,3 +18,9 @@ export interface IUpdateReceiptRequest {
     purchaseDate: string;
     price: number;
 }
+
+export interface IJoinGroupResponse {
+    code: number;
+    message: string;
+    data: null;
+}
