@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 
-import { RootModal } from "@/components/feedback/Modal";
+import { RootModal } from "@/components/feedback/Modal/RootModal";
 import { Toast } from "@/components/feedback/Toast/Toast";
 import { NavBar } from "@/components/navigation/NavBar";
 
