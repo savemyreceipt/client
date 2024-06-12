@@ -2,6 +2,10 @@ import { toast } from "react-toastify";
 
 import { api } from "@/config/axios";
 
+import { OK } from "@/utils/responseStatus";
+
+import { ExceptionHandler } from "../__common__/exceptions";
+import { IJoinGroupResponse } from "../receipt/receipt.types";
 import {
     ICreateGroupRequest,
     IReadGroupByGroupId,
@@ -9,6 +13,11 @@ import {
     IReadReceiptByGroupIdResponse,
     ISearchGroupsResponse,
 } from "./groups.types";
+
+export enum ROLE {
+    ACCOUNTANT = "ACCOUNTANT",
+    MEMBER = "MEMBER",
+}
 
 export const groupsService = {
     searchGroups: async (keyword: string, page: number = 1) => {
@@ -39,5 +48,16 @@ export const groupsService = {
     readReceiptsByGroupId: async (groupId: number, page: number = 0) => {
         const response = await api.get<IReadReceiptByGroupIdResponse>(`/groups/${groupId}/receipts?page=${page}`);
         return response.data.data.receiptList.content;
+    },
+
+    joinGroup: async (groupId: number, role: ROLE = ROLE.MEMBER) => {
+        const response = await api.post<IJoinGroupResponse>(`/groups/${groupId}/members?role=${role}`);
+        ExceptionHandler(response.status);
+        return response.data;
+    },
+
+    leaveGroup: async (groupId: number) => {
+        const response = await api.delete(`/groups/${groupId}/members`);
+        return response.data;
     },
 };
