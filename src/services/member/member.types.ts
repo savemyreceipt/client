@@ -1,5 +1,3 @@
-import { BaseResponse } from "../__common__/types";
-
 export interface IReadProfileResponse {
     code: number;
     message: string;

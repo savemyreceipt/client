@@ -2,9 +2,6 @@ import { toast } from "react-toastify";
 
 import { api } from "@/config/axios";
 
-import { OK } from "@/utils/responseStatus";
-
-import { ExceptionHandler } from "../__common__/exceptions";
 import { IJoinGroupResponse } from "../receipt/receipt.types";
 import {
     ICreateGroupRequest,
@@ -52,7 +49,6 @@ export const groupsService = {
 
     joinGroup: async (groupId: number, role: ROLE = ROLE.MEMBER) => {
         const response = await api.post<IJoinGroupResponse>(`/groups/${groupId}/members?role=${role}`);
-        ExceptionHandler(response.status);
         return response.data;
     },
 
