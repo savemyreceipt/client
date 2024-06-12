@@ -1,4 +1,8 @@
+import { toast } from "react-toastify";
+
 import { api } from "@/config/axios";
+
+import { OK } from "@/utils/responseStatus";
 
 import { IUpdateReceiptRequest, IUploadReceiptResponse } from "./receipt.types";
 
@@ -10,6 +14,7 @@ export const receiptService = {
         const response = await api.post<IUploadReceiptResponse>(`/receipts/${groupId}`, formData, {
             headers: { "Content-Type": "multipart/form-data" },
         });
+        if (!OK(response.status)) throw new Error();
         return response.data.data;
     },
 
