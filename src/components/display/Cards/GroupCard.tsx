@@ -14,8 +14,8 @@ import { Card, CardHeader, CardContent, CardFooter } from "./style";
 import { faReceipt, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export interface IGroupCard extends ISearchGroup {
-    variants: "SEARCH" | "JOINED";
+export interface IGroupCard extends ISearchGroup, Omit<React.ComponentProps<"div">, "id"> {
+    button: React.ReactNode;
 }
 
 export const GroupCard: React.FC<IGroupCard> = ({
@@ -27,38 +27,11 @@ export const GroupCard: React.FC<IGroupCard> = ({
     memberCount,
     receiptCount,
     accountantName,
-    variants,
+    button,
+    ...rest
 }) => {
-    const router = useRouter();
-
-    const handleJoinBtnClick = useCallback(async () => {
-        const request = groupsService.joinGroup(id);
-        toast
-            .promise(request, {
-                pending: "그룹 가입중입니다",
-                success: "그룹 가입 성공!",
-                error: "이미 가입된 그룹입니다",
-            })
-            .then(() => {
-                router.push({ pathname: `/groups/${id}` });
-            });
-    }, [id, router]);
-
-    const handleLeaveBtnClick = useCallback(async () => {
-        const request = groupsService.leaveGroup(id);
-        toast
-            .promise(request, {
-                success: "그룹 탈퇴 완료!",
-                pending: "잠시만 기다려주세요..",
-                error: "그룹 탈퇴 실패! 관리자에게 문의해주세요",
-            })
-            .then(() => {
-                queryClient.invalidateQueries({ queryKey: [`/groups`] });
-            });
-    }, [id]);
-
     return (
-        <Card>
+        <Card {...rest}>
             <CardHeader>
                 <div className="flex justify-between items-center mb-2">
                     <div className="text-xs text-gray-500 overflow-hidden text-ellipsis">
@@ -87,13 +60,7 @@ export const GroupCard: React.FC<IGroupCard> = ({
                     </Avatar>
                     <div className="text-xs text-gray-500">{accountantName}</div>
                 </div>
-                <Button
-                    size="sm"
-                    variant={variants === "SEARCH" ? "default" : "destructive"}
-                    onClick={variants === "SEARCH" ? handleJoinBtnClick : handleLeaveBtnClick}
-                >
-                    {variants === "SEARCH" ? "가입하기" : "탈퇴하기"}
-                </Button>
+                {button}
             </CardFooter>
         </Card>
     );

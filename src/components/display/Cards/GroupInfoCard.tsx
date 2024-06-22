@@ -7,13 +7,14 @@ import { Card, CardContent } from "./style";
 export const GroupInfoCard = () => {
     const { isPending, data } = useGroupInfo();
 
-    if (isPending)
+    if (isPending) {
         return (
             <>
                 <TitleSkeleton />
                 <GroupInfoCardSkeleton />
             </>
         );
+    }
 
     return (
         <>
