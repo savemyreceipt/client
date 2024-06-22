@@ -1,9 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/display/Avatar";
-import { GroupCard, GroupCardSkeleton } from "@/components/display/Cards/GroupCard";
-import { GroupInfoCard } from "@/components/display/Cards/GroupInfoCard";
+import { GroupCardSkeleton } from "@/components/display/Cards/GroupCard";
 import { GroupJoinedCard } from "@/components/display/Cards/GroupJoinedCard";
-import { MemberCard, MemberCardSkeleton } from "@/components/display/Cards/MemberCard";
-import { ReceiptCardSkeleton } from "@/components/display/Cards/ReceiptCard";
+import { MemberCardSkeleton } from "@/components/display/Cards/MemberCard";
 import { Button } from "@/components/forms/Button";
 import { withProtectedRoute } from "@/components/guards/withProtectedRoute";
 
