@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useSearchParams } from "next/navigation";
 
 import { GroupCard, GroupCardSkeleton } from "@/components/display/Cards/GroupCard";
+import { GroupSearchCard } from "@/components/display/Cards/GroupSearchCard";
 import { SearchBar } from "@/components/forms/SearchBar";
 import { withProtectedRoute } from "@/components/guards/withProtectedRoute";
 import { Pagination } from "@/components/navigation/Pagination";
@@ -32,8 +33,7 @@ export default withProtectedRoute(function GroupsPage() {
                               })
                             : data?.content.map((group) => {
                                   return (
-                                      <GroupCard
-                                          variants="SEARCH"
+                                      <GroupSearchCard
                                           key={group.id}
                                           id={group.id}
                                           city={group.city}
