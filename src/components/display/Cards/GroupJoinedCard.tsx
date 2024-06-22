@@ -32,12 +32,13 @@ export const GroupJoinedCard: React.FC<IGroupJoinedCard> = ({ ...props }) => {
     }, [props.id]);
 
     const handleCardClick = useCallback(() => {
-        router.push(`/groups/${router.query.id}`);
-    }, [router]);
+        router.push(`/groups/${props.id}`);
+    }, [props.id, router]);
 
     return (
         <GroupCard
             {...props}
+            className="hover:cursor-pointer"
             button={
                 <Button size="sm" variant="destructive" onClick={handleLeaveBtnClick}>
                     탈퇴하기
