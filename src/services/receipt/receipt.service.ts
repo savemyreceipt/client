@@ -19,11 +19,15 @@ export const receiptService = {
     },
 
     updateReceipt: async (receiptId: number, body: IUpdateReceiptRequest) => {
+        if (receiptId === undefined) throw new Error("ReceiptId is Undefined!");
+
         const response = await api.put(`/receipts/${receiptId}`, body);
         return response.data;
     },
 
     deleteReceipt: async (receiptId: number) => {
+        if (receiptId === undefined) throw new Error("ReceiptId is Undefined!");
+
         const response = await api.delete(`/receipts/${receiptId}`);
         return response.data;
     },
