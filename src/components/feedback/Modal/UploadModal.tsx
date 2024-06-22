@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { useCallback } from "react";
-
 import { motion } from "framer-motion";
 
 import { Card } from "@/components/display/Cards/style";
@@ -12,8 +10,6 @@ import { Textarea } from "@/components/forms/TextArea";
 import { useReceiptUpload } from "@/hooks/receipt/useReceiptUpload";
 
 import { UploadIcon } from "@/assets/UploadIcon";
-
-import { useUploadModal } from "@/context/UploadModalContext";
 
 export const UploadModal = () => {
     const {
