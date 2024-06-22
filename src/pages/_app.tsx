@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -45,6 +46,9 @@ export default function App({ Component, pageProps }: AppProps) {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
                     >
+                        <Head>
+                            <link rel="icon" href="/favicon.ico" />
+                        </Head>
                         <Component {...pageProps} />
                     </motion.main>
                 </RootContextProvider>
