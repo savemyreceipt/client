@@ -56,7 +56,7 @@ export default withProtectedRoute(function ProfilePage() {
                                               <GroupCard
                                                   variants="JOINED"
                                                   key={group.id}
-                                                  id={0}
+                                                  id={group.id}
                                                   name={group.name}
                                                   city={group.city}
                                                   organization={group.organization}
