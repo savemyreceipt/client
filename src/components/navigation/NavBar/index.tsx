@@ -30,10 +30,11 @@ export const NavBar = () => {
     return (
         <header className="z-40 fixed top-0 left-0 w-screen flex items-center h-16 px-4 border-b shrink-0 bg-white md:px-6">
             <Link className="flex items-center gap-2 text-lg font-semibold md:text-base" href="/groups">
-                Save My Receipt
+                <img src="/logo_main.svg" className="h-[25px] hidden md:block" alt="" />
+                <img src="/favicon.ico" className="h-[25px] block md:hidden" alt="" />
             </Link>
 
-            <nav className="mx-10 flex gap-3 md:flex md:items-center md:gap-5 lg:gap-6 sm:flex sm:gap-3">
+            <nav className="mx-10 flex gap-3 sm:mx-5 md:flex md:items-center md:gap-5 lg:gap-6 sm:flex sm:gap-3">
                 {navItems.map((navItem) => {
                     return (
                         <Link className="text-gray-500" href={navItem.href} key={navItem.id}>
