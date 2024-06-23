@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 
 import { Button } from "@/components/forms/Button";
 
+import { queryClient } from "@/pages/_app";
+
 import { groupsService } from "@/services/groups/groups.service";
 
 import { GroupCard, IGroupCard } from "./GroupCard";
@@ -23,6 +25,7 @@ export const GroupSearchCard: React.FC<IGroupSearchCard> = ({ ...props }) => {
             })
             .then(() => {
                 router.push(`/groups/${props.id}`);
+                queryClient.invalidateQueries({ queryKey: [`/groups`, `/my/groups`] });
             })
             .catch((e) => {
                 console.error(e);
