@@ -9,7 +9,7 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/display/DropDown";
+} from "@/components/display/DropDown/DropDown";
 import { NotificationDropDown } from "@/components/display/DropDown/NotificationDropDown";
 
 import { useAuth } from "@/hooks/member/useAuth";

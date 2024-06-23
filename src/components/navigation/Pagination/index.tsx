@@ -17,8 +17,6 @@ export interface IPagination {
 }
 
 export const Pagination: React.FC<IPagination> = ({ totalPages }) => {
-    const searchParam = useSearchParams();
-
     const { page: currentPage } = usePage();
 
     return (

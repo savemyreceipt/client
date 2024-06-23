@@ -1,6 +1,6 @@
-import { DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from ".";
-
 import { useNotifications } from "@/hooks/notification/useNotifications";
+
+import { DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from "./DropDown";
 
 export interface INotification {
     title: string;
