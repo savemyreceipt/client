@@ -4,7 +4,7 @@ import { api } from "@/config/axios";
 
 import { OK } from "@/utils/responseStatus";
 
-import { IUpdateReceiptRequest, IUploadReceiptResponse } from "./receipt.types";
+import { IReadReceiptByIdRepsonse, IUpdateReceiptRequest, IUploadReceiptResponse } from "./receipt.types";
 
 export const receiptService = {
     uploadReceipt: async (groupId: number, file: Blob) => {
@@ -30,5 +30,11 @@ export const receiptService = {
 
         const response = await api.delete(`/receipts/${receiptId}`);
         return response.data;
+    },
+
+    readReceiptById: async (receiptId: number) => {
+        if (!receiptId) throw new Error("ReceiptId is Not Provided");
+        const response = await api.get<IReadReceiptByIdRepsonse>(`/receipts/${receiptId}`);
+        return response.data.data;
     },
 };
