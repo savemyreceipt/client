@@ -25,6 +25,7 @@ export const groupsService = {
     },
 
     readGroupByGroupId: async (groupId: number) => {
+        if (!groupId) throw new Error("groupId is not Provided");
         const response = await api.get<IReadGroupByGroupId>(`/groups/${groupId}`);
         return response.data.data;
     },
@@ -40,11 +41,13 @@ export const groupsService = {
     },
 
     readGroupMembers: async (groupId: number, page: number = 0) => {
+        if (!groupId) throw new Error("groupId is not Provided");
         const response = await api.get<IReadGroupMembersResponse>(`/groups/${groupId}/members?page=${page}`);
         return response.data.data.memberList;
     },
 
     readReceiptsByGroupId: async (groupId: number, page: number = 0) => {
+        if (!groupId) throw new Error("groupId is Not Provided");
         const response = await api.get<IReadReceiptByGroupIdResponse>(`/groups/${groupId}/receipts?page=${page}`);
         return response.data.data.receiptList.content;
     },
