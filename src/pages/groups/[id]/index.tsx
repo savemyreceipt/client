@@ -40,12 +40,13 @@ export default withProtectedRoute(function GroupDetailPage() {
                 error: "회계담당자는 그룹을 탈퇴할 수 없습니다",
             })
             .then(() => {
-                queryClient.invalidateQueries({ queryKey: [`/groups`] });
+                queryClient.invalidateQueries({ queryKey: [`/groups`, `/my/groups`] });
+                router.push(`/groups`);
             })
             .catch((e) => {
                 console.log(e);
             });
-    }, []);
+    }, [router]);
 
     const handleNavigateReceiptPage = useCallback(() => {
         router.push(`/groups/${router.query.id}/receipts`);
