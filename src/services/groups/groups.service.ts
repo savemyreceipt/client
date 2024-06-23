@@ -1,5 +1,7 @@
 import { toast } from "react-toastify";
 
+import { AxiosError } from "axios";
+
 import { api } from "@/config/axios";
 
 import { IJoinGroupResponse } from "../receipt/receipt.types";
@@ -49,11 +51,17 @@ export const groupsService = {
 
     joinGroup: async (groupId: number, role: ROLE = ROLE.MEMBER) => {
         const response = await api.post<IJoinGroupResponse>(`/groups/${groupId}/members?role=${role}`);
+        if (response instanceof AxiosError) {
+            if (response.code === AxiosError.ERR_BAD_REQUEST) throw new Error("그룹은 최대 10개까지 가입 가능합니다");
+        }
         return response.data;
     },
 
     leaveGroup: async (groupId: number) => {
         const response = await api.delete(`/groups/${groupId}/members`);
+        if (response instanceof AxiosError) {
+            if (response.code === AxiosError.ERR_BAD_REQUEST) throw new Error("회계담당자는 그룹을 탈퇴할 수 없습니다");
+        }
         return response.data;
     },
 };
