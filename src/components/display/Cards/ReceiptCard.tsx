@@ -1,6 +1,9 @@
+import { useCallback } from "react";
+
 import { Button } from "@/components/forms/Button";
 
 import { Card } from "./style";
+import { useDetailModal } from "@/context/DetailModalContext";
 import { faReceipt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -12,6 +15,13 @@ export interface IReceiptCard {
 }
 
 export const ReceiptCard: React.FC<IReceiptCard> = ({ id, category, purchaseDate, price }) => {
+    const { setIsModalOpened, setReceiptId } = useDetailModal();
+
+    const handleClick = useCallback(() => {
+        setReceiptId(id);
+        setIsModalOpened(true);
+    }, [id, setReceiptId, setIsModalOpened]);
+
     return (
         <Card className="p-3 flex-1">
             <div className="flex items-center justify-between">
@@ -23,7 +33,7 @@ export const ReceiptCard: React.FC<IReceiptCard> = ({ id, category, purchaseDate
             </div>
             <div className="mt-4 flex items-center justify-between">
                 <span className="text-lg font-bold">{price} 원</span>
-                <Button size="sm" variant="outline">
+                <Button size="sm" variant="outline" onClick={handleClick}>
                     상세정보
                 </Button>
             </div>
