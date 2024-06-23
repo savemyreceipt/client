@@ -95,12 +95,10 @@ export const useReceiptUpload = (maxFileSize: number = 5 * 1024 * 1024) => {
                 })
                 .then(() => {
                     queryClient.invalidateQueries({
-                        queryKey: [
-                            `/groups/:groupId/receipts`,
-                            `/groups/${Number(router.query.id)}`,
-                            `/groups/:groupId`,
-                            `/groups/${Number(router.query.id)}`,
-                        ],
+                        queryKey: [`/groups/:groupId/receipts`, `/groups/${Number(router.query.id)}`],
+                    });
+                    queryClient.invalidateQueries({
+                        queryKey: [`/groups/:groupId`, `/groups/${Number(router.query.id)}`],
                     });
                 })
                 .catch(() => {
