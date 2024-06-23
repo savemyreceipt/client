@@ -85,7 +85,7 @@ export default withProtectedRoute(function GroupDetailPage() {
                                 ? Array.from({ length: 12 }).map((_, index) => {
                                       return <ReceiptCardSkeleton key={index} />;
                                   })
-                                : receipts?.map((receipt) => {
+                                : receipts?.content.map((receipt) => {
                                       return (
                                           <ReceiptCard
                                               key={receipt.id}

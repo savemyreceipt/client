@@ -49,7 +49,7 @@ export const groupsService = {
     readReceiptsByGroupId: async (groupId: number, page: number = 0) => {
         if (!groupId) throw new Error("groupId is Not Provided");
         const response = await api.get<IReadReceiptByGroupIdResponse>(`/groups/${groupId}/receipts?page=${page}`);
-        return response.data.data.receiptList.content;
+        return response.data.data.receiptList;
     },
 
     joinGroup: async (groupId: number, role: ROLE = ROLE.MEMBER) => {

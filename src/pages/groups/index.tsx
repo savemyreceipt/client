@@ -1,7 +1,6 @@
 import Head from "next/head";
-import { useSearchParams } from "next/navigation";
 
-import { GroupCard, GroupCardSkeleton } from "@/components/display/Cards/GroupCard";
+import { GroupCardSkeleton } from "@/components/display/Cards/GroupCard";
 import { GroupSearchCard } from "@/components/display/Cards/GroupSearchCard";
 import { SearchBar } from "@/components/forms/SearchBar";
 import { withProtectedRoute } from "@/components/guards/withProtectedRoute";
