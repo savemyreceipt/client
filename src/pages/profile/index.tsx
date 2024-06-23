@@ -1,13 +1,10 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/display/Avatar";
 import { GroupCardSkeleton } from "@/components/display/Cards/GroupCard";
 import { GroupJoinedCard } from "@/components/display/Cards/GroupJoinedCard";
-import { MemberCardSkeleton } from "@/components/display/Cards/MemberCard";
 import { Button } from "@/components/forms/Button";
 import { withProtectedRoute } from "@/components/guards/withProtectedRoute";
 
 import { useMyGroups } from "@/hooks/groups/useMyGroups";
-
-import { ChevronRightIcon } from "@/assets/ChevronRightIcon";
 
 import { useProfile } from "@/context/ProfileContext";
 
@@ -66,14 +63,6 @@ export default withProtectedRoute(function ProfilePage() {
                                               />
                                           );
                                       })}
-                            </div>
-                        </div>
-                        <div className="grid gap-4">
-                            <h2 className="text-2xl font-bold text-gray-900">멤버</h2>
-                            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                                {Array.from({ length: 12 }).map((_, index) => {
-                                    return <MemberCardSkeleton key={index} />;
-                                })}
                             </div>
                         </div>
                     </div>

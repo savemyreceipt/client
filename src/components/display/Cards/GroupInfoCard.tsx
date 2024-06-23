@@ -39,6 +39,10 @@ export const GroupInfoCard = () => {
                             <div className="text-sm font-medium text-gray-900 ">{data?.receiptCount ?? "0"} 개</div>
                         </div>
                         <div className="flex items-center justify-between">
+                            <div className="text-sm font-medium text-gray-500 ">총 지출</div>
+                            <div className="text-sm font-medium text-gray-900 ">{data?.totalExpenditure ?? "0"} 원</div>
+                        </div>
+                        <div className="flex items-center justify-between">
                             <div className="text-sm font-medium text-gray-500 ">회계 담당자</div>
                             <div className="text-sm font-medium text-gray-900 ">{data?.accountantName}</div>
                         </div>
@@ -69,6 +73,10 @@ export const GroupInfoCardSkeleton = () => {
                     <div className="flex items-center justify-between">
                         <div className="text-sm font-medium text-gray-500">총 영수증</div>
                         <div className="w-12 h-4 bg-gray-300 animate-pulse rounded"></div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                        <div className="text-sm font-medium text-gray-500">회계 담당자</div>
+                        <div className="w-24 h-4 bg-gray-300 animate-pulse rounded"></div>
                     </div>
                     <div className="flex items-center justify-between">
                         <div className="text-sm font-medium text-gray-500">회계 담당자</div>

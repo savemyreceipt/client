@@ -58,6 +58,7 @@ export interface IReadGroupByGroupId {
         receiptCount: number;
         accountantName: string;
         accountant: boolean;
+        totalExpenditure: number;
     };
 }
 
