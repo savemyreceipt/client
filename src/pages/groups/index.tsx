@@ -28,8 +28,7 @@ export default withProtectedRoute(function GroupsPage() {
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {isPending
                             ? Array.from({ length: 12 }).map((_, index) => {
-                                  //   return <GroupCardSkeleton key={index} />;
-                                  return <></>;
+                                  return <GroupCardSkeleton key={index} />;
                               })
                             : data?.content.map((group) => {
                                   return (
