@@ -95,7 +95,7 @@ export const useReceiptUpload = (maxFileSize: number = 5 * 1024 * 1024) => {
                 })
                 .then(() => {
                     queryClient.invalidateQueries({
-                        queryKey: [`/receipts`],
+                        queryKey: [`/groups/:groupId/receipts`, `/groups/${Number(router.query.id)}`],
                     });
                 })
                 .catch(() => {
@@ -105,14 +105,19 @@ export const useReceiptUpload = (maxFileSize: number = 5 * 1024 * 1024) => {
                     setIsModalOpened(false);
                 });
         },
-        [isUploading, data?.id, setIsModalOpened],
+        [isUploading, data?.id, setIsModalOpened, router.query.id],
     );
 
     const handleCancel = useCallback(async () => {
         if (isUploading) return;
-        receiptService.deleteReceipt(data?.id as number).then(() => {
-            setIsModalOpened(false);
-        });
+        receiptService
+            .deleteReceipt(data?.id as number)
+            .catch((e) => {
+                toast.error("영수증 업로드가 취소되었습니다");
+            })
+            .finally(() => {
+                setIsModalOpened(false);
+            });
     }, [setIsModalOpened, isUploading, data?.id]);
 
     return {
