@@ -8,14 +8,14 @@ import { ReceiptCard, ReceiptCardSkeleton } from "@/components/display/Cards/Rec
 import { Button } from "@/components/forms/Button";
 import { withProtectedRoute } from "@/components/guards/withProtectedRoute";
 
-import { queryClient } from "@/pages/_app";
-
 import { useGroupMembers } from "@/hooks/groups/useGroupMembers";
 import { useReceipt } from "@/hooks/receipt/useReceipt";
 
 import { groupsService } from "@/services/groups/groups.service";
 
 import { ChevronRightIcon } from "@/assets/ChevronRightIcon";
+
+import { queryClient } from "@/config/query";
 
 import { useUploadModal } from "@/context/UploadModalContext";
 

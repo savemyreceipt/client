@@ -31,9 +31,9 @@ export const groupsService = {
     },
 
     createGroup: async ({ name, city, organization, description }: ICreateGroupRequest) => {
-        const response = api.post(`/groups`, { name, city, organization, description });
+        const request = api.post(`/groups`, { name, city, organization, description });
 
-        return toast.promise(response, {
+        return toast.promise(request, {
             pending: "그룹을 생성하고 있습니다",
             success: "그룹 생성 완료!",
             error: "그룹 생성 실패!",
