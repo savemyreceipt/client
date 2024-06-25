@@ -2,10 +2,10 @@ import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useCallback, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
-import { queryClient } from "@/pages/_app";
-
 import { receiptService } from "@/services/receipt/receipt.service";
 import { IUploadReceiptResponse } from "@/services/receipt/receipt.types";
+
+import { queryClient } from "@/config/query";
 
 import { useUploadModal } from "@/context/UploadModalContext";
 
