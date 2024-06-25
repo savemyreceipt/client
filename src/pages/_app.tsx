@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import "react-toastify/dist/ReactToastify.css";
 
 import { AnimatePresence } from "framer-motion";
-import { motion } from "framer-motion";
 
 import { PageTransition } from "@/components/animations/PageTransition";
 import { RootModal } from "@/components/feedback/Modal/RootModal";
