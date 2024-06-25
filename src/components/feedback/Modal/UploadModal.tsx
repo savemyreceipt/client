@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { motion } from "framer-motion";
 
-import { Card } from "@/components/display/Cards/style";
+import { Card } from "@/components/display/Cards/Card";
 import { Button } from "@/components/forms/Button";
 import { Input } from "@/components/forms/Input";
 import { Label } from "@/components/forms/Label";

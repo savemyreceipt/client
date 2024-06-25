@@ -3,17 +3,17 @@ import { FormEvent, useCallback } from "react";
 import { toast } from "react-toastify";
 
 import { ModalFade } from "@/components/animations/ModalFade";
-import { Card } from "@/components/display/Cards/style";
+import { Card } from "@/components/display/Cards/Card";
 import { Button } from "@/components/forms/Button";
 import { Input } from "@/components/forms/Input";
 import { Label } from "@/components/forms/Label";
 import { Textarea } from "@/components/forms/TextArea";
 
-import { queryClient } from "@/pages/_app";
-
 import { useReceiptDetail } from "@/hooks/receipt/useReceipt";
 
 import { receiptService } from "@/services/receipt/receipt.service";
+
+import { queryClient } from "@/config/query";
 
 import { useDetailModal } from "@/context/DetailModalContext";
 
