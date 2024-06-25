@@ -4,8 +4,6 @@ import { toast } from "react-toastify";
 
 import { Button } from "@/components/forms/Button";
 
-import { queryClient } from "@/pages/_app";
-
 import { groupsService } from "@/services/groups/groups.service";
 
 import { GroupCard, IGroupCard } from "./GroupCard";

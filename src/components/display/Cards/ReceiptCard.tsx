@@ -2,7 +2,7 @@ import { useCallback } from "react";
 
 import { Button } from "@/components/forms/Button";
 
-import { Card } from "./style";
+import { Card } from "./Card";
 import { useDetailModal } from "@/context/DetailModalContext";
 import { faReceipt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

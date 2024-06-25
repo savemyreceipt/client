@@ -1,16 +1,7 @@
-import { useRouter } from "next/router";
-import { useCallback } from "react";
-import { toast } from "react-toastify";
-
-import { Button } from "@/components/forms/Button";
-
-import { queryClient } from "@/pages/_app";
-
-import { groupsService } from "@/services/groups/groups.service";
 import { ISearchGroup } from "@/services/groups/groups.types";
 
-import { Avatar, AvatarImage } from "../Avatar";
-import { Card, CardHeader, CardContent, CardFooter } from "./style";
+import { Avatar, AvatarImage } from "../Avatar/Avatar";
+import { Card, CardHeader, CardContent, CardFooter } from "./Card";
 import { faReceipt, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

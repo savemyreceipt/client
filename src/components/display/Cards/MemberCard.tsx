@@ -1,5 +1,5 @@
-import { Avatar, AvatarImage } from "../Avatar";
-import { Card, CardContent } from "./style";
+import { Avatar, AvatarImage } from "../Avatar/Avatar";
+import { Card, CardContent } from "./Card";
 
 export interface IMemberCard {
     email: string;

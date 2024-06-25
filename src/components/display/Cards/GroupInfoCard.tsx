@@ -2,7 +2,7 @@ import { Title, TitleSkeleton } from "@/components/typography/Title";
 
 import { useGroupInfo } from "@/hooks/groups/useGroupInfo";
 
-import { Card, CardContent } from "./style";
+import { Card, CardContent } from "./Card";
 
 export const GroupInfoCard = () => {
     const { isPending, data } = useGroupInfo();
