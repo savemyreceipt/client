@@ -4,17 +4,18 @@ import { groupsService } from "@/services/groups/groups.service";
 
 import { useDebounce } from "../useDebounce";
 import { usePage } from "../usePage";
+import { GROUP_QUERY_KEYS } from "./keys";
 import { useQuery } from "@tanstack/react-query";
 
 export const useSearchGroup = () => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [keyword, setKeyword] = useState<string>("");
 
-    const debouncedKeyword = useDebounce(keyword, 1000);
     const { page } = usePage();
+    const debouncedKeyword = useDebounce(keyword, 1000);
 
     const { isPending, data } = useQuery({
-        queryKey: [`/groups`, `/groups/search?keyword=${debouncedKeyword}&page=${page}`],
+        queryKey: GROUP_QUERY_KEYS.READ_GROUP_BY_KEYWORD(keyword, page),
         queryFn: () => groupsService.searchGroups(debouncedKeyword, page === 0 ? 1 : page),
         staleTime: 0,
     });

@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
 import { useCallback, useRef } from "react";
 
-import { queryClient } from "@/pages/_app";
-
 import { groupsService } from "@/services/groups/groups.service";
 
+import { queryClient } from "@/config/query";
+
+import { GROUP_QUERY_KEYS } from "./keys";
 import { useMutation } from "@tanstack/react-query";
 
 export const useNewGroup = () => {
@@ -24,7 +25,7 @@ export const useNewGroup = () => {
                 description: descriptionRef.current?.value as string,
             }),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: [`/groups`] });
+            queryClient.invalidateQueries({ queryKey: GROUP_QUERY_KEYS.ALL() });
             router.replace("/groups");
         },
     });
