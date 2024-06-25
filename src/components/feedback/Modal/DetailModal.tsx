@@ -9,7 +9,7 @@ import { Input } from "@/components/forms/Input";
 import { Label } from "@/components/forms/Label";
 import { Textarea } from "@/components/forms/TextArea";
 
-import { useReceiptDetail } from "@/hooks/receipt/useReceipt";
+import { useReceiptDetail } from "@/hooks/receipt/useReceiptDetail";
 
 import { receiptService } from "@/services/receipt/receipt.service";
 

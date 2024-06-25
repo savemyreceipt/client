@@ -1,6 +1,6 @@
 import { ReceiptCard, ReceiptCardSkeleton } from "@/components/display/Cards/ReceiptCard";
 import { withProtectedRoute } from "@/components/guards/withProtectedRoute";
-import { Pagination } from "@/components/navigation/Pagination";
+import { Pagination } from "@/components/navigation/Pagination/Pagination";
 import { Title } from "@/components/typography/Title";
 
 import { useReceipt } from "@/hooks/receipt/useReceipt";

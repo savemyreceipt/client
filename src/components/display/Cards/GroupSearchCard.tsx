@@ -6,6 +6,8 @@ import { Button } from "@/components/forms/Button";
 
 import { groupsService } from "@/services/groups/groups.service";
 
+import { queryClient } from "@/config/query";
+
 import { GroupCard, IGroupCard } from "./GroupCard";
 
 export interface IGroupSearchCard extends Omit<IGroupCard, "button"> {}

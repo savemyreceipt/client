@@ -4,7 +4,7 @@ import { GroupCardSkeleton } from "@/components/display/Cards/GroupCard";
 import { GroupSearchCard } from "@/components/display/Cards/GroupSearchCard";
 import { SearchBar } from "@/components/forms/SearchBar";
 import { withProtectedRoute } from "@/components/guards/withProtectedRoute";
-import { Pagination } from "@/components/navigation/Pagination";
+import { Pagination } from "@/components/navigation/Pagination/Pagination";
 import { Title } from "@/components/typography/Title";
 
 import { useSearchGroup } from "@/hooks/groups/useSearchGroup";

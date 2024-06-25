@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/display/Avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/display/Avatar/Avatar";
 import { GroupCardSkeleton } from "@/components/display/Cards/GroupCard";
 import { GroupJoinedCard } from "@/components/display/Cards/GroupJoinedCard";
 import { Button } from "@/components/forms/Button";
