@@ -11,7 +11,7 @@ export const ProfileContext = createContext({
     profileUri: "",
 });
 
-export const ProfileContextProvider = ({ children }: { children: React.ReactNode }) => {
+export const ProfileContextProvider = ({ children }: { children?: React.ReactNode }) => {
     const { data } = useQuery<IReadProfileResponse>({
         queryKey: ["members"],
         queryFn: () => memberService.readProfile(),

@@ -5,7 +5,7 @@ export const UploadModalContext = createContext<{
     setIsModalOpened: Dispatch<SetStateAction<boolean>>;
 } | null>(null);
 
-export const UploadModalContextProvider = ({ children }: { children: React.ReactNode }) => {
+export const UploadModalContextProvider = ({ children }: { children?: React.ReactNode }) => {
     const [isModalOpened, setIsModalOpened] = useState<boolean>(false);
     return (
         <UploadModalContext.Provider value={{ isModalOpened, setIsModalOpened }}>

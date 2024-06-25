@@ -10,7 +10,7 @@ export const DetailModalContext = createContext<{
     setReceiptId: Dispatch<SetStateAction<number>>;
 } | null>(null);
 
-export const DetailModalContextProvider = ({ children }: { children: React.ReactNode }) => {
+export const DetailModalContextProvider = ({ children }: { children?: React.ReactNode }) => {
     const [isModalOpened, setIsModalOpened] = useState<boolean>(false);
     const [receiptId, setReceiptId] = useState<number>(NaN);
 
