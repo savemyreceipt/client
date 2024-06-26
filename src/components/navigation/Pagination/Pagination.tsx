@@ -1,6 +1,3 @@
-import { useSearchParams } from "next/navigation";
-import { useMemo } from "react";
-
 import { usePage } from "@/hooks/usePage";
 
 import {

@@ -1,7 +1,6 @@
+import { Input } from "../Input";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Input } from "../Input";
-import { FormEventHandler } from "react";
 
 export const SearchBar = (props: React.ComponentProps<"input">) => {
     return (
