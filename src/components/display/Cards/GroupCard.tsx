@@ -28,14 +28,14 @@ export const GroupCard: React.FC<IGroupCard> = ({
                     <div className="text-xs text-gray-500 overflow-hidden text-ellipsis">
                         {city}/{organization}
                     </div>
-                    <div className="text-xs text-gray-500 flex-shrink-0">
-                        <span>
-                            <FontAwesomeIcon icon={faUsers} className="mx-1" />
-                            {memberCount} 명
+                    <div className="text-xs text-gray-500 flex-shrink-0 flex">
+                        <span className="flex items-center">
+                            <FontAwesomeIcon icon={faUsers} className="mx-1 flex-shrink-0 h-[13px]" />
+                            <span className="flex-shrink-0">{memberCount} 명</span>
                         </span>
-                        <span>
-                            <FontAwesomeIcon icon={faReceipt} className="mx-1" />
-                            {receiptCount || "0"} 개
+                        <span className="flex items-center">
+                            <FontAwesomeIcon icon={faReceipt} className="mx-1 flex-shrink-0 h-[13px]" />
+                            <span className="flex-shrink-0">{receiptCount || "0"} 개</span>
                         </span>
                     </div>
                 </div>
