@@ -26,8 +26,8 @@ export const ReceiptCard: React.FC<IReceiptCard> = ({ id, category, purchaseDate
         <Card className="p-3 flex-1">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <FontAwesomeIcon icon={faReceipt} />
-                    <span className="text-sm font-medium">{category || "기타"}</span>
+                    <FontAwesomeIcon icon={faReceipt} className="flex-shrink-0 h-[15px]" />
+                    <span className="text-sm font-medium flex-shrink-0">{category || "기타"}</span>
                 </div>
                 <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{purchaseDate}</span>
             </div>
