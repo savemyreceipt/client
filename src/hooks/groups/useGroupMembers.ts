@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 export const useGroupMembers = (page: number = 0) => {
     const router = useRouter();
     const query = useQuery({
-        queryKey: GROUP_QUERY_KEYS.READ_GROUP_MEMBERS_BY_GROUP_ID(Number(router.query.id)),
+        queryKey: GROUP_QUERY_KEYS.READ_GROUP_MEMBERS_BY_GROUP_ID(Number(router.query.id), page),
         queryFn: () => groupsService.readGroupMembers(Number(router.query.id), page),
     });
     return { ...query };
