@@ -15,7 +15,7 @@ export const useSearchGroup = () => {
     const debouncedKeyword = useDebounce(keyword, 1000);
 
     const { isPending, data } = useQuery({
-        queryKey: GROUP_QUERY_KEYS.READ_GROUP_BY_KEYWORD(keyword, page),
+        queryKey: GROUP_QUERY_KEYS.READ_GROUP_BY_KEYWORD(debouncedKeyword, page),
         queryFn: () => groupsService.searchGroups(debouncedKeyword, page === 0 ? 1 : page),
         staleTime: 0,
     });
